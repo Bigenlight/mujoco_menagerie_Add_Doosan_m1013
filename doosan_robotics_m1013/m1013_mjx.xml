@@ -21,7 +21,6 @@
     <default class="m1013">
       <geom type="mesh" contype="0" conaffinity="0" group="1"/>
       <joint pos="0 0 0" axis="0 0 1"/>
-
       <default class="collision">
         <geom contype="1" conaffinity="1" group="4"/>
       </default>
@@ -49,26 +48,30 @@
             <inertial pos="-1.5e-05 -0.006702 0.044608" quat="0.713939 -0.0462748 0.0455669 0.69719" mass="3.68"
               diaginertia="0.0191021 0.0187478 0.0113721"/>
             <joint name="joint_3" range="-2.7925 2.7925" actuatorfrcrange="-163 163" damping="100"/>
-            <geom name="link_3_c" pos="-1.5e-05 0.001 0.044608" euler="1.39626 0 1.5708" size="0.1 0.06 0.09" type="box" class="collision"/>
+            <geom name="link_3_c" pos="-1.5e-05 0.001 0.044608" euler="1.39626 0 1.5708" size="0.1 0.06 0.09" type="box"
+              class="collision"/>
             <geom mesh="MF1013_3_0" material="white"/>
             <body name="link_4" pos="0 -0.559 0" quat="0.707035 0.707179 0 0">
               <inertial pos="7.1e-05 0.091879 -0.18252" quat="0.987197 -0.159369 -0.000923443 -0.0064664" mass="3.82"
                 diaginertia="0.19063 0.190249 0.0128173"/>
               <joint name="joint_4" range="-6.2832 6.2832" actuatorfrcrange="-50 50" damping="20"/>
-              <geom name="link_4_c" pos="7.1e-05 0.091879 -0.20252" size="0.26 0.06 0.08" euler="1.22173 0 1.5708" type="box" class="collision"/>
+              <geom name="link_4_c" pos="7.1e-05 0.091879 -0.20252" size="0.26 0.06 0.08" euler="1.22173 0 1.5708"
+                type="box" class="collision"/>
               <geom mesh="MF1013_4_0" material="white"/>
               <geom mesh="MF1013_4_1" material="white"/>
               <body name="link_5" quat="0.707035 -0.707179 0 0">
                 <inertial pos="-0.000273 0.003651 0.032088" quat="0.996984 0.0775632 0.000422658 0.00257843" mass="2.82"
                   diaginertia="0.0155831 0.0115855 0.00880048"/>
-                <joint name="joint_5" range="-6.2832 6.2832" actuatorfrcrange="-50 50" damping="20"/>      
-                <geom name="link_5_c" pos="-0.000273 0.003651 0.032088" size="0.052 0.06 0.08" euler="0 0 0" type="box" class="collision"/>
+                <joint name="joint_5" range="-6.2832 6.2832" actuatorfrcrange="-50 50" damping="20"/>
+                <geom name="link_5_c" pos="-0.000273 0.019651 0.032088" size="0.052 0.07 0.08" type="box"
+                  class="collision"/>
                 <geom mesh="MF1013_5_0" material="white"/>
                 <body name="link_6" pos="0 -0.121 0" quat="0.707035 0.707179 0 0">
                   <inertial pos="-0.000292 7e-06 -0.0539" quat="0.0099287 0.708965 0.0073912 0.705135" mass="1.16"
                     diaginertia="0.00612644 0.00595181 0.00482815"/>
-                  <joint name="joint_6" range="-6.2832 6.2832" actuatorfrcrange="-50 50" damping="20"/>                          
-                  <geom name="link_6_c" pos="-0.000292 7e-06 -0.0539" size="0.042 0.042 0.05" euler="0 0 0" type="box" class="collision"/>
+                  <joint name="joint_6" range="-6.2832 6.2832" actuatorfrcrange="-50 50" damping="20"/>
+                  <geom name="link_6_c" pos="-0.000292 7e-06 -0.0539" size="0.042 0.042 0.05" type="box"
+                    class="collision"/>
                   <geom mesh="MF1013_6_0" material="metal"/>
                 </body>
               </body>
@@ -79,23 +82,17 @@
     </body>
   </worldbody>
 
-  <worldbody>
-    <body name="cylinder1" pos="0.51 -0.32 0.1" euler="0 0 0">
-      <freejoint/>
-      <geom type="cylinder" name="cylinder1" size="0.032 0.027 0.01" condim="3"
-        rgba="0 0.7 0.7 1" contype="0" conaffinity="1" solref="0.01 1" density="500" friction="0.01 0.003 .0003"/>
-    </body>
-  </worldbody>
-
   <contact>
     <exclude body1="link_1" body2="link_2"/>
-    <exclude body1="link_2" body2="link_3"/> 
+    <exclude body1="link_2" body2="link_3"/>
     <exclude body1="link_3" body2="link_4"/>
     <exclude body1="link_4" body2="link_5"/>
     <exclude body1="link_5" body2="link_6"/>
-    <exclude body1="link_2" body2="link_3"/> 
+    <exclude body1="link_2" body2="link_3"/>
     <exclude body1="link_2" body2="link_4"/>
+    <exclude body1="link_4" body2="link_6"/>
   </contact>
+
   <actuator>
     <position joint="joint_1" kp="10000" kv="200" ctrlrange="-6.28319 6.28319"/>
     <position joint="joint_2" kp="10000" kv="200" ctrlrange="-6.28319 6.28319"/>
@@ -105,7 +102,7 @@
     <position joint="joint_6" kp="10000" kv="10" ctrlrange="-6.28319 6.28319"/>
   </actuator>
 
-  <!-- <keyframe>
+  <keyframe>
     <key name="home" qpos="0 0 1.57 0 1.57 0" ctrl="0 0 1.57 0 1.57 0"/>
-  </keyframe> -->
+  </keyframe>
 </mujoco>
