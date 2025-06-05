@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mujoco model="m1013 scene">
-  <include file="m1013.xml"/>
+  <include file="m1013_mjx.xml"/>
 
   <statistic center="0.3 0 0.4" extent="1"/>
 
